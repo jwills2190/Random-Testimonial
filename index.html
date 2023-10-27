@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>NAPS - National Association to Promote Siestas</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com"> 
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+	<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+	<header>
+		<div class="content-wrapper">
+			<img src="img/naps-logo.svg" class="logo" alt="NAPS Logo">
+			<nav>
+				<ul>
+					<li><a href="#">SiestaCon</a></li>
+					<li><a href="#">Press</a></li>
+					<li><a href="#">Contact</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+	<div class="hero">
+		<h1>National Association to Promote Siestas</h1>
+		<p>Promoting siestas for increased health & happiness.</p>
+	</div>
+
+	<main role="main">
+		<div class="content-wrapper">
+			<p id="press-quote">NAPS is by far the most significant cultural force of the decade. — New York Times</p>
+			<p>We work hard to make sure your boss, your family, and your friends know that it’s okay for you to take a siesta wherever and whenever you want. We also educate city governments nation-wide about the benefits of sleeping on park benches. Thanks to our efforts, most criminals respect the siesta and will not steal your personal belongings while you take a siesta in a public area. We’re currently working with the U.S. congress to introduce legislation designed to safeguard the jobs of employees who take siestas at work. We also help fund many local chapter organizations. If you’re interested in starting a NAPS chapter in your local community, please <a href="#">contact&nbsp;us</a>.</p>
+			<h2>Our History</h2>
+			<figure>
+				<img src="img/william-dozer.jpg" alt="William Dozer">
+				<figcaption>William Dozer on that fateful day</figcaption>
+			</figure>
+			<p>NAPS began in 1938 when our founder, William Dozer, was fired from his job for taking a siesta during work hours at a Baltimore factory. William realized that siestas are a fundamental human right, so he organized a strike at the factory. The strike was a success and led to a company-wide policy which allowed three siestas per day. After the successful strike, William Dozer started NAPS with the goal of implementing similar policies across the United States. Today NAPS operates out of Washington, D.C. with local chapters in all 50 states, advocating for free sleep in all spheres of life.</p>
+		</div>
+	</main>
+
+	<footer>
+		<p>Copyright © National Association to Promote Siestas</p>
+	</footer>
+
+	<script>
+		// for declaring objects such as DOM elements (buttons, etc) or arrays, better to use const than let.
+		let fruits = ['apple', 'banana', 'cherry'];
+		console.log(fruits, fruits.length, fruits[0], typeof(fruits));
+		// fruits with let is bad because it's datatype can be changed.
+		fruits = 100;
+		console.log(fruits,  fruits.length, fruits[0], typeof(fruits));
+		// const objects cannot have their datatype changed:
+		// const protects the datatype, which is why const's for arrays is better than let.
+		const veggies = ['carrot', 'celery', 'cucumber'];
+		// veggies = 50; // error: assignment to constant variable.
+		// even though you can't assign veggies to be a different datatype, const is still flexible enough for you to call all the array methods, such as push():
+		veggies.push('beet', 'kale');
+		console.log(veggies, veggies.length, veggies[0], typeof(veggies)); // ['carrot', 'celery', 'cucumber', 'beet', 'kale'];
+
+		// how can we change beet to broccoli?
+		veggies[3] = 'broccoli';
+		console.log(veggies, veggies.length, veggies[0], typeof(veggies));
+
+		// get the press photo p tag:
+		const pressQuoteP = document.getElementById('press-quote');
+		console.log(pressQuoteP.textContent); // NAPS is by far the most significant cultural force of the decade. — New York Times
+
+		// make array of press quotes:
+		const quotes = ['NAPS is by far the most significant cultural force of the decade. — New York Times',
+						'These days sleeping at your desk is not just acceptable, it’s encouraged. — The Atlantic',
+						'NAPS has changed the way people think about sleep, on a grand scale. — Washington Post',
+						'Happiness increased 200% since NAPS began promoting siestas. — National Science Review',
+						'NAPS has ushered in a new era of sleep. — USA Today',
+						'Not surprisingly, more siestas means more productivity. — Wall Street Journal',
+						'NAPS is doing the hard work of helping people get the rest they need. — U.S. News']
+		
+		console.log('First Quote:', quotes[0]);
+		console.log('Last Quote:', quotes[quotes.length-1]);
+
+		// make a function that runs on page load every time and outputs a new quote:
+		function changeQuote() {
+			// Math.random() returns a 17-digit float from 0-1
+			// let randNum = Math.random();
+			// multiply the float from 0-1 by 7, the length of the quotes array
+			// randNum = randNum * quotes.length;
+			// Math.floor(float) takes a float and returns the rounded down int version.
+			// round down the result; possible values are all in the 0-6 rang, which is the index range of the quotes array.
+			let r = Math.floor(Math.random() * quotes.length);
+			pressQuoteP.textContent = quotes[r]; // output the randomly chosen quote.
+		}
+
+		// call the function whenever the page reloads -- no user interaction required.
+		changeQuote();
+
+		// Math.random() returns a 17-digit float from 0-1
+		let randNum = Math.random();
+		console.log('randNum:', randNum);
+		randNum = randNum * quotes.length;
+		console.log('randNum:', randNum);
+		// Math.floor(float) takes a float and returns the rounded down int version.
+		// Math.floor(7.9999) => 7
+		randNum = Math.floor(randNum);
+
+
+	</script>
+
+</body>
+</html>
